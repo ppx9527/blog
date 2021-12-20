@@ -1,21 +1,21 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from "path"
-import { changePackageVersion } from "./build/plugins"
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { resolve } from 'path';
+import { changePackageVersion } from './build/plugins';
 import { readdirSync } from 'fs';
 
 /**
  * 获取多入口文件
- * @returns 
+ * @returns
  */
 export function getPages() {
-  let pagePath = resolve(__dirname, "./src/pages");
-  let files: string[] = readdirSync(pagePath);
-  let pages: { [key: string]: string } = {
-    main: resolve(__dirname, 'index.html')
+  const pagePath = resolve(__dirname, './src/pages');
+  const files: string[] = readdirSync(pagePath);
+  const pages: { [key: string]: string } = {
+    main: resolve(__dirname, 'index.html'),
   };
   for (let i = 0; i < files.length; i++) {
-    let key = files[i].replace('.html', '');
+    const key = files[i].replace('.html', '');
     if (key === 'index') continue;
     pages[key] = resolve(__dirname, `src/pages/${files[i]}`);
   }
@@ -24,21 +24,21 @@ export function getPages() {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",
+  base: './',
   resolve: {
     alias: {
-      "@": resolve(__dirname, "./src")
-    }
+      '@': resolve(__dirname, './src'),
+    },
   },
   plugins: [
     changePackageVersion(),
     vue({
-      refTransform: [/src/]
-    })
+      refTransform: [/src/],
+    }),
   ],
   build: {
     rollupOptions: {
       input: getPages(),
-    }
-  }
-})
+    },
+  },
+});

@@ -11,19 +11,12 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/**/*.ts"
-    , "src/**/*.d.ts"
-    , "src/**/*.tsx"
-    , "src/**/*.vue"
-    , "build/**/*.ts"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "build/**/*.ts"],
   "exclude": ["node_modules"]
 }
