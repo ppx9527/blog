@@ -30,12 +30,7 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
     },
   },
-  plugins: [
-    changePackageVersion(),
-    vue({
-      refTransform: [/src/],
-    }),
-  ],
+  plugins: [changePackageVersion(), vue()],
   build: {
     rollupOptions: {
       input: getPages(),
